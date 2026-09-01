@@ -1778,6 +1778,20 @@ footer {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
+.form-group input.input-error,
+.form-group select.input-error {
+  border-color: var(--danger) !important;
+  background-color: #fffafb !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.18) !important;
+  animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
 .full-width { grid-column: span 6; }
 .half-width { grid-column: span 3; }
 .third-width { grid-column: span 2; }

@@ -564,14 +564,122 @@ function updateCheckoutSummary() {
   if (checkoutBtnTotalEl) checkoutBtnTotalEl.textContent = `$${grandTotal.toFixed(2)}`;
 }
 
+function validateCheckoutForm(paymentMethod = 'card') {
+  // Clear previous error classes
+  document.querySelectorAll('.checkout-main-form input, .checkout-main-form select').forEach(el => {
+    el.classList.remove('input-error');
+  });
+
+  const emailInput = document.getElementById('checkout-email');
+  const fnameInput = document.getElementById('checkout-fname');
+  const lnameInput = document.getElementById('checkout-lname');
+  const addressInput = document.getElementById('checkout-address');
+  const cityInput = document.getElementById('checkout-city');
+  const stateInput = document.getElementById('checkout-state');
+  const zipInput = document.getElementById('checkout-zip');
+
+  const fieldsToCheck = [
+    { el: emailInput, label: 'Email Address', isEmail: true },
+    { el: fnameInput, label: 'First Name' },
+    { el: lnameInput, label: 'Last Name' },
+    { el: addressInput, label: 'Street Address' },
+    { el: cityInput, label: 'City' },
+    { el: stateInput, label: 'State / Region' },
+    { el: zipInput, label: 'Postal / Zip Code' }
+  ];
+
+  // If card payment is selected, validate card details
+  const activePayMethod = document.querySelector('input[name="payment_method"]:checked')?.value || paymentMethod;
+  if (activePayMethod === 'card') {
+    const cardNum = document.getElementById('card-num');
+    const cardExp = document.getElementById('card-exp');
+    const cardCvv = document.getElementById('card-cvv');
+    const cardHolder = document.getElementById('card-holder');
+
+    fieldsToCheck.push(
+      { el: cardNum, label: 'Card Number' },
+      { el: cardExp, label: 'Expiration Date' },
+      { el: cardCvv, label: 'Security Code (CVV)' },
+      { el: cardHolder, label: 'Cardholder Name' }
+    );
+  }
+
+  let firstInvalid = null;
+  let validationMessage = '';
+
+  for (const field of fieldsToCheck) {
+    if (!field.el) continue;
+    const val = field.el.value.trim();
+
+    if (!val) {
+      field.el.classList.add('input-error');
+      if (!firstInvalid) {
+        firstInvalid = field.el;
+        validationMessage = `Please enter your ${field.label}.`;
+      }
+    } else if (field.isEmail) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(val)) {
+        field.el.classList.add('input-error');
+        if (!firstInvalid) {
+          firstInvalid = field.el;
+          validationMessage = 'Please provide a valid email address.';
+        }
+      }
+    }
+
+    // Auto-remove error highlight on input
+    field.el.addEventListener('input', () => {
+      field.el.classList.remove('input-error');
+    }, { once: true });
+  }
+
+  if (firstInvalid) {
+    firstInvalid.focus();
+    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    showToast(validationMessage || 'Please fulfill all required details to proceed.');
+    return false;
+  }
+
+  return true;
+}
+
 function simulateExpress(service) {
   showToast(`Initiating ${service} Express Checkout...`);
   setTimeout(() => {
-    processOrder(service);
+    // For simulated express, auto-populate sample details if empty
+    const emailInput = document.getElementById('checkout-email');
+    const fnameInput = document.getElementById('checkout-fname');
+    const lnameInput = document.getElementById('checkout-lname');
+    const addressInput = document.getElementById('checkout-address');
+    const cityInput = document.getElementById('checkout-city');
+    const stateInput = document.getElementById('checkout-state');
+    const zipInput = document.getElementById('checkout-zip');
+
+    if (emailInput && !emailInput.value) emailInput.value = 'client@express.com';
+    if (fnameInput && !fnameInput.value) fnameInput.value = 'Express';
+    if (lnameInput && !lnameInput.value) lnameInput.value = 'Client';
+    if (addressInput && !addressInput.value) addressInput.value = '1 Express Way';
+    if (cityInput && !cityInput.value) cityInput.value = 'New York';
+    if (stateInput && !stateInput.value) stateInput.value = 'NY';
+    if (zipInput && !zipInput.value) zipInput.value = '10001';
+
+    processOrder(service, true);
   }, 1000);
 }
 
-function processOrder(paymentMethod = 'Credit Card') {
+function processOrder(paymentMethod = 'Credit Card', skipValidation = false) {
+  if (!cart || cart.length === 0) {
+    showToast('Your shopping bag is empty. Add items before checking out.');
+    return;
+  }
+
+  const activePayMethod = document.querySelector('input[name="payment_method"]:checked')?.value || 'card';
+
+  if (!skipValidation && !validateCheckoutForm(activePayMethod)) {
+    return;
+  }
+
   const btn = document.getElementById('place-order-btn');
   const btnText = btn ? btn.querySelector('.btn-text') : null;
   const btnSpinner = btn ? btn.querySelector('.btn-spinner') : null;
