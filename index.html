@@ -21,12 +21,23 @@
 
     <!-- Announcement Bar -->
     <div class="announcement-bar">
-        <div class="announcement-text">
-            <span>✨ COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $150</span>
-            <span class="divider">•</span>
-            <span>USE CODE <strong class="promo-highlight">VELURE10</strong> FOR 10% OFF YOUR FIRST ORDER</span>
-            <span class="divider">•</span>
-            <span>30-DAY HASSLE-FREE RETURNS & EXCHANGES</span>
+        <div class="announcement-track">
+            <div class="announcement-text">
+                <span>✨ COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $150</span>
+                <span class="divider">•</span>
+                <span>USE CODE <strong class="promo-highlight">VELURE10</strong> FOR 10% OFF YOUR FIRST ORDER</span>
+                <span class="divider">•</span>
+                <span>30-DAY HASSLE-FREE RETURNS & EXCHANGES</span>
+                <span class="divider">•</span>
+            </div>
+            <div class="announcement-text" aria-hidden="true">
+                <span>✨ COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $150</span>
+                <span class="divider">•</span>
+                <span>USE CODE <strong class="promo-highlight">VELURE10</strong> FOR 10% OFF YOUR FIRST ORDER</span>
+                <span class="divider">•</span>
+                <span>30-DAY HASSLE-FREE RETURNS & EXCHANGES</span>
+                <span class="divider">•</span>
+            </div>
         </div>
     </div>
 
@@ -426,7 +437,7 @@
                         <div class="form-grid">
                             <div class="form-group full-width">
                                 <label for="checkout-email">Email Address for Order Confirmation & Tracking</label>
-                                <input type="email" id="checkout-email" placeholder="alex.morgan@example.com" value="alex.morgan@velure.com" required>
+                                <input type="email" id="checkout-email" placeholder="e.g. name@example.com" required>
                             </div>
                             <div class="form-group full-width">
                                 <label class="checkbox-label">
@@ -445,27 +456,27 @@
                         <div class="form-grid">
                             <div class="form-group half-width">
                                 <label for="checkout-fname">First Name</label>
-                                <input type="text" id="checkout-fname" value="Alex" required>
+                                <input type="text" id="checkout-fname" placeholder="First name" required>
                             </div>
                             <div class="form-group half-width">
                                 <label for="checkout-lname">Last Name</label>
-                                <input type="text" id="checkout-lname" value="Morgan" required>
+                                <input type="text" id="checkout-lname" placeholder="Last name" required>
                             </div>
                             <div class="form-group full-width">
                                 <label for="checkout-address">Street Address</label>
-                                <input type="text" id="checkout-address" value="740 Park Avenue, Suite 12B" required>
+                                <input type="text" id="checkout-address" placeholder="Street address, apartment, suite, etc." required>
                             </div>
                             <div class="form-group third-width">
                                 <label for="checkout-city">City</label>
-                                <input type="text" id="checkout-city" value="New York" required>
+                                <input type="text" id="checkout-city" placeholder="City" required>
                             </div>
                             <div class="form-group third-width">
                                 <label for="checkout-state">State / Region</label>
-                                <input type="text" id="checkout-state" value="NY" required>
+                                <input type="text" id="checkout-state" placeholder="State / Region" required>
                             </div>
                             <div class="form-group third-width">
                                 <label for="checkout-zip">Postal / Zip Code</label>
-                                <input type="text" id="checkout-zip" value="10021" required>
+                                <input type="text" id="checkout-zip" placeholder="Postal / Zip code" required>
                             </div>
                             <div class="form-group full-width">
                                 <label for="checkout-country">Country</label>
@@ -534,23 +545,23 @@
                             <div class="form-group full-width">
                                 <label for="card-num">Card Number</label>
                                 <div class="input-with-icon">
-                                    <input type="text" id="card-num" placeholder="4242 •••• •••• 4242" value="4532 8921 0034 8921" maxlength="19">
+                                    <input type="text" id="card-num" placeholder="4242 •••• •••• 4242" maxlength="19">
                                     <i class="ph ph-lock card-lock-icon"></i>
                                 </div>
                             </div>
                             <div class="form-row-2">
                                 <div class="form-group">
                                     <label for="card-exp">Expiration Date</label>
-                                    <input type="text" id="card-exp" placeholder="MM/YY" value="08/28" maxlength="5">
+                                    <input type="text" id="card-exp" placeholder="MM/YY" maxlength="5">
                                 </div>
                                 <div class="form-group">
                                     <label for="card-cvv">Security Code (CVV)</label>
-                                    <input type="text" id="card-cvv" placeholder="CVC" value="784" maxlength="4">
+                                    <input type="text" id="card-cvv" placeholder="CVC" maxlength="4">
                                 </div>
                             </div>
                             <div class="form-group full-width">
                                 <label for="card-holder">Cardholder Name</label>
-                                <input type="text" id="card-holder" value="ALEX MORGAN">
+                                <input type="text" id="card-holder" placeholder="Full name on card">
                             </div>
                         </div>
 
