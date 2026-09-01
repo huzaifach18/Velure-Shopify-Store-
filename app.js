@@ -590,7 +590,26 @@ function processOrder(paymentMethod = 'Credit Card') {
 
     const orderId = '#VEL-' + Math.floor(10000 + Math.random() * 90000);
     const fnameInput = document.getElementById('checkout-fname');
-    const customerName = fnameInput && fnameInput.value ? fnameInput.value : 'Valued Client';
+    const lnameInput = document.getElementById('checkout-lname');
+    const addressInput = document.getElementById('checkout-address');
+    const cityInput = document.getElementById('checkout-city');
+    const stateInput = document.getElementById('checkout-state');
+    const zipInput = document.getElementById('checkout-zip');
+    
+    const customerName = fnameInput && fnameInput.value.trim() 
+      ? `${fnameInput.value.trim()} ${lnameInput && lnameInput.value.trim() ? lnameInput.value.trim() : ''}`.trim()
+      : 'Valued Client';
+
+    const addressParts = [
+      addressInput && addressInput.value.trim(),
+      cityInput && cityInput.value.trim(),
+      stateInput && stateInput.value.trim(),
+      zipInput && zipInput.value.trim()
+    ].filter(Boolean);
+
+    const shippingAddressText = addressParts.length > 0 
+      ? addressParts.join(', ')
+      : 'Standard Express Shipping Address';
 
     if (document.getElementById('success-customer-name')) {
       document.getElementById('success-customer-name').textContent = customerName;
@@ -615,7 +634,7 @@ function processOrder(paymentMethod = 'Credit Card') {
           ${cart.map(item => `• ${item.quantity}x ${item.name} (${item.size})`).join('<br>')}
         </div>
         <div style="font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.5rem;">
-          <strong>Shipping Address:</strong> 740 Park Avenue, New York, NY 10021<br>
+          <strong>Shipping Address:</strong> ${shippingAddressText}<br>
           <strong>Delivery Service:</strong> ${currentShippingName} (Tracking link sent to email)
         </div>
       `;
