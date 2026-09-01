@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>VELURE | Luxury Fashion & Elevated Accessories</title>
+    <meta name="description" content="Explore luxury contemporary clothing, tailored garments, and handcrafted accessories for men and women.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Phosphor Icons CDN -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-text">
+            <span>✨ COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $150</span>
+            <span class="divider">•</span>
+            <span>USE CODE <strong class="promo-highlight">VELURE10</strong> FOR 10% OFF YOUR FIRST ORDER</span>
+            <span class="divider">•</span>
+            <span>30-DAY HASSLE-FREE RETURNS & EXCHANGES</span>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <nav id="navbar">
+        <div class="nav-left">
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open Navigation Menu">
+                <i class="ph ph-list"></i>
+            </button>
+            <a href="#hero" class="logo">VELURE</a>
+        </div>
+
+        <div class="nav-center nav-links">
+            <a href="#men-section">Men</a>
+            <a href="#women-section">Women</a>
+            <a href="#accessories-section">Accessories</a>
+            <a href="#about-brand">Our Story</a>
+        </div>
+
+        <div class="nav-right">
+            <button class="nav-icon-btn" id="search-toggle-btn" title="Search Catalog" aria-label="Search">
+                <i class="ph ph-magnifying-glass"></i>
+            </button>
+            <button class="nav-icon-btn" id="cart-icon" title="Shopping Bag" aria-label="Shopping Bag">
+                <i class="ph ph-shopping-bag"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <div class="mobile-nav-header">
+            <div class="logo">VELURE</div>
+            <button class="close-mobile-nav" id="close-mobile-nav"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#men-section" onclick="closeMobileMenu()"><i class="ph ph-user"></i> Men's Collection</a>
+            <a href="#women-section" onclick="closeMobileMenu()"><i class="ph ph-dress"></i> Women's Collection</a>
+            <a href="#accessories-section" onclick="closeMobileMenu()"><i class="ph ph-watch"></i> Handcrafted Accessories</a>
+            <a href="#about-brand" onclick="closeMobileMenu()"><i class="ph ph-sparkle"></i> Atelier & Story</a>
+        </div>
+        <div class="mobile-nav-footer">
+            <div class="mobile-promo-badge">
+                <i class="ph ph-tag"></i> Use Code <strong>VELURE10</strong> for 10% Off
+            </div>
+            <p>Customer Concierge: support@velure.com</p>
+        </div>
+    </div>
+
+    <!-- Quick Search Bar Overlay Dropdown -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-container">
+            <i class="ph ph-magnifying-glass search-input-icon"></i>
+            <input type="text" id="global-search-input" placeholder="Search jackets, linen shirts, silk dresses, watches, bags...">
+            <button class="close-search-btn" id="close-search-btn"><i class="ph ph-x"></i></button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-bg-wrapper">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=85&w=2200" alt="VELURE Editorial Runway Hero" class="hero-img" onerror="handleImgError(this, 'Women')">
+            <div class="hero-gradient-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-tagline">AUTUMN / WINTER ATELIER 2026</span>
+            <h1 class="hero-title">Elegance in <br>Every Form</h1>
+            <p class="hero-subtitle">Modern silhouettes, architectural tailoring, and handcrafted accessories engineered with uncompromising luxury standards.</p>
+            <div class="hero-buttons">
+                <a href="#men-section" class="btn btn-primary">Shop Men</a>
+                <a href="#women-section" class="btn btn-secondary">Shop Women</a>
+                <a href="#accessories-section" class="btn btn-outline">Explore Accessories</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Showcase Spotlight Banners (3 Large Visual Tiles) -->
+    <section class="category-spotlight-section">
+        <div class="section-header-centered">
+            <span class="section-badge">COLLECTION SPOTLIGHT</span>
+            <h2>Curated Collections</h2>
+            <p>Direct from our design studio to your wardrobe</p>
+        </div>
+
+        <div class="spotlight-grid">
+            <!-- Spotlight 1: Men -->
+            <div class="spotlight-card" onclick="scrollToSection('men-section')">
+                <div class="spotlight-img-box">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1000" alt="Men's Spotlight" onerror="handleImgError(this, 'Men')">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-subtitle">STRUCTURED & REFINED</span>
+                        <h3>Men's Collection</h3>
+                        <p>20 Pieces • Italian Wool Tailoring & Premium Streetwear</p>
+                        <span class="spotlight-link">Explore Men <i class="ph ph-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spotlight 2: Women -->
+            <div class="spotlight-card" onclick="scrollToSection('women-section')">
+                <div class="spotlight-img-box">
+                    <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=1000" alt="Women's Spotlight" onerror="handleImgError(this, 'Women')">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-subtitle">FLUID & TIMELESS</span>
+                        <h3>Women's Collection</h3>
+                        <p>20 Pieces • Mulberry Silk, Hourglass Blazers & Knits</p>
+                        <span class="spotlight-link">Explore Women <i class="ph ph-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spotlight 3: Accessories -->
+            <div class="spotlight-card" onclick="scrollToSection('accessories-section')">
+                <div class="spotlight-img-box">
+                    <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=1000" alt="Accessories Spotlight" onerror="handleImgError(this, 'Accessories')">
+                    <div class="spotlight-overlay">
+                        <span class="spotlight-subtitle">DETAILS & TIMELESS ACCENTS</span>
+                        <h3>Accessories Studio</h3>
+                        <p>15 Pieces • Swiss Watches, Full-Grain Totes & 18K Gold</p>
+                        <span class="spotlight-link">Explore Accessories <i class="ph ph-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: MEN'S COLLECTION WITH DEDICATED BANNER -->
+    <section class="collection-block-section" id="men-section">
+        <!-- Category Banner -->
+        <div class="collection-category-banner men-banner">
+            <div class="category-banner-bg">
+                <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=85&w=2000" alt="Men's Editorial Banner" onerror="handleImgError(this, 'Men')">
+                <div class="banner-overlay-dark"></div>
+            </div>
+            <div class="category-banner-content">
+                <span class="banner-pill">MEN'S ATELIER</span>
+                <h2>The Men's Collection</h2>
+                <p>Engineered for effortless distinction. From relaxed linen tailoring to heavy-gauge winter outerwear.</p>
+                <div class="banner-stats">
+                    <span><strong>20</strong> Curated Styles</span>
+                    <span><strong>100%</strong> Organic & Sustainable Cotton</span>
+                    <span><strong>Free</strong> Express Shipping</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Men's Products Grid -->
+        <div class="collection-products-container">
+            <div class="products-grid" id="men-products-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: WOMEN'S COLLECTION WITH DEDICATED BANNER -->
+    <section class="collection-block-section" id="women-section">
+        <!-- Category Banner -->
+        <div class="collection-category-banner women-banner">
+            <div class="category-banner-bg">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=85&w=2000" alt="Women's Editorial Banner" onerror="handleImgError(this, 'Women')">
+                <div class="banner-overlay-dark"></div>
+            </div>
+            <div class="category-banner-content">
+                <span class="banner-pill">WOMEN'S ATELIER</span>
+                <h2>The Women's Collection</h2>
+                <p>Pure mulberry silks, sculpted hourglass blazers, and buttery-soft seamless knits tailored for the modern muse.</p>
+                <div class="banner-stats">
+                    <span><strong>20</strong> Signature Silhouettes</span>
+                    <span><strong>Grade 6A</strong> Mulberry Silk</span>
+                    <span><strong>Tailored</strong> Comfort Stretch</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Women's Products Grid -->
+        <div class="collection-products-container">
+            <div class="products-grid" id="women-products-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ACCESSORIES WITH DEDICATED BANNER -->
+    <section class="collection-block-section" id="accessories-section">
+        <!-- Category Banner -->
+        <div class="collection-category-banner accessories-banner">
+            <div class="category-banner-bg">
+                <img src="https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?auto=format&fit=crop&q=85&w=2000" alt="Accessories Editorial Banner" onerror="handleImgError(this, 'Accessories')">
+                <div class="banner-overlay-dark"></div>
+            </div>
+            <div class="category-banner-content">
+                <span class="banner-pill">THE DETAIL STUDIO</span>
+                <h2>Handcrafted Accessories</h2>
+                <p>Swiss sapphire timepieces, vegetable-tanned full-grain leather bags, and 18K vermeil jewelry.</p>
+                <div class="banner-stats">
+                    <span><strong>15</strong> Essential Pieces</span>
+                    <span><strong>Full-Grain</strong> Tuscan Leather</span>
+                    <span><strong>Lifetime</strong> Craftsmanship Warranty</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accessories Products Grid -->
+        <div class="collection-products-container">
+            <div class="products-grid" id="accessories-products-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Perks & Values Section -->
+    <section class="brand-values-section" id="about-brand">
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon"><i class="ph ph-airplane-tilt"></i></div>
+                <h4>Free Express Shipping</h4>
+                <p>Complimentary expedited delivery on all orders over $150 worldwide.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="ph ph-arrows-clockwise"></i></div>
+                <h4>30-Day Free Returns</h4>
+                <p>Not completely in love? Return or exchange with prepaid return shipping.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="ph ph-plant"></i></div>
+                <h4>Ethical & Sustainable</h4>
+                <p>100% GOTS-certified organic cotton, cruelty-free silks, and zero waste ateliers.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="ph ph-shield-check"></i></div>
+                <h4>Guaranteed Authenticity</h4>
+                <p>Every piece is certified with our bespoke atelier serial and lifetime warranty.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">VELURE</div>
+                <p class="brand-desc">Redefining modern luxury with timeless architectural silhouettes, sustainably crafted fabrics, and unapologetic craftsmanship.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="ph ph-tiktok-logo"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="ph ph-pinterest-logo"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="ph ph-x-logo"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Departments</h3>
+                <ul>
+                    <li><a href="#men-section">Men's Tailoring & Streetwear</a></li>
+                    <li><a href="#women-section">Women's Silk & Eveningwear</a></li>
+                    <li><a href="#accessories-section">Leather Bags & Swiss Watches</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Client Care</h3>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="openCheckout()">Direct Checkout</a></li>
+                    <li><a href="#about-brand">Shipping Policy & Tracking</a></li>
+                    <li><a href="#about-brand">30-Day Hassle-Free Returns</a></li>
+                    <li><a href="#about-brand">Size & Fit Guidance</a></li>
+                    <li><a href="#about-brand">Sustainability Atelier</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter-col">
+                <h3>The VELURE Journal</h3>
+                <p>Subscribe for private archive access, seasonal runway previews, and exclusive VIP benefits.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Thank you for subscribing to VELURE VIP!');">
+                    <input type="email" placeholder="Enter your email address..." required aria-label="Email Address">
+                    <button type="submit">Join VIP</button>
+                </form>
+                <span class="newsletter-notice">🔒 No spam. Unsubscribe anytime with 1 click.</span>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 VELURE Atelier Inc. All rights reserved.</div>
+            <div class="payment-badges">
+                <span class="badge-item"><i class="ph ph-credit-card"></i> Visa</span>
+                <span class="badge-item"><i class="ph ph-credit-card"></i> Mastercard</span>
+                <span class="badge-item"><i class="ph ph-apple-podcasts-logo"></i> Apple Pay</span>
+                <span class="badge-item"><i class="ph ph-google-chrome-logo"></i> Google Pay</span>
+                <span class="badge-item"><i class="ph ph-lock-key"></i> 256-Bit SSL Encrypted</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== INTERACTIVE MODALS & DRAWERS ==================== -->
+
+    <!-- Cart Overlay & Sliding Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <div class="cart-header-title">
+                <h2>Your Shopping Bag</h2>
+                <span class="cart-drawer-count" id="cart-drawer-count">(0 items)</span>
+            </div>
+            <button class="close-cart" id="close-cart" title="Close Bag"><i class="ph ph-x"></i></button>
+        </div>
+
+        <!-- Free Shipping Progress Indicator -->
+        <div class="shipping-progress-bar-container">
+            <div class="shipping-text" id="shipping-progress-text">Add $150.00 more for Free Express Shipping!</div>
+            <div class="progress-track">
+                <div class="progress-fill" id="shipping-progress-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Cart Items Container -->
+        <div class="cart-items" id="cart-items-container">
+            <!-- Injected via JavaScript -->
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer">
+            <!-- Promo Code Input in Drawer -->
+            <div class="drawer-promo-box">
+                <div class="promo-input-group">
+                    <input type="text" id="drawer-promo-input" placeholder="Enter coupon (e.g. VELURE10)">
+                    <button type="button" onclick="applyPromoCode()">Apply</button>
+                </div>
+                <div id="promo-status-msg" class="promo-status-msg"></div>
+            </div>
+
+            <div class="cart-summary-line">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">$0.00</strong>
+            </div>
+            <div class="cart-summary-line discount-line" id="discount-line" style="display: none;">
+                <span>Coupon Applied (<span id="discount-code-name"></span>)</span>
+                <strong id="cart-discount" style="color: var(--success);">-0.00</strong>
+            </div>
+            <div class="cart-summary-line total-line">
+                <span>Estimated Total</span>
+                <strong id="cart-total">$0.00</strong>
+            </div>
+            <p class="cart-tax-note">Taxes and shipping calculated at checkout</p>
+            <button class="btn btn-primary btn-block checkout-btn" onclick="openCheckout()">
+                Proceed to Checkout <i class="ph ph-arrow-right"></i>
+            </button>
+            <div class="cart-security-badge">
+                <i class="ph ph-lock-key"></i> Guaranteed Safe & Secure 256-Bit Checkout
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Checkout Modal -->
+    <div class="checkout-modal-overlay" id="checkout-modal-overlay">
+        <div class="checkout-modal-card">
+            <!-- Modal Header -->
+            <div class="checkout-modal-header">
+                <div class="checkout-brand-title">
+                    <span class="logo">VELURE</span>
+                    <span class="checkout-badge-pill"><i class="ph ph-shield-check"></i> SECURE ENCRYPTED CHECKOUT</span>
+                </div>
+                <button class="close-checkout-btn" onclick="closeCheckout()"><i class="ph ph-x"></i></button>
+            </div>
+
+            <!-- Modal Body (Two Columns: Form + Order Summary) -->
+            <div class="checkout-modal-body" id="checkout-form-container">
+                <!-- Left: Form Steps -->
+                <div class="checkout-main-form">
+                    <!-- Express Checkout Options -->
+                    <div class="express-checkout-block">
+                        <span class="express-label">Express Checkout</span>
+                        <div class="express-btns-row">
+                            <button type="button" class="btn-express btn-shoppay" onclick="simulateExpress('Shop Pay')">
+                                <strong>Shop</strong>Pay
+                            </button>
+                            <button type="button" class="btn-express btn-applepay" onclick="simulateExpress('Apple Pay')">
+                                <i class="ph ph-apple-podcasts-logo"></i> Pay
+                            </button>
+                            <button type="button" class="btn-express btn-gpay" onclick="simulateExpress('GPay')">
+                                <strong>G</strong>Pay
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="checkout-divider">
+                        <span>OR CONTINUE WITH STANDARD CHECKOUT</span>
+                    </div>
+
+                    <!-- Step 1: Contact Information -->
+                    <div class="checkout-section-box">
+                        <div class="section-num-title">
+                            <span class="step-circle">1</span>
+                            <h3>Contact Information</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="checkout-email">Email Address for Order Confirmation & Tracking</label>
+                                <input type="email" id="checkout-email" placeholder="alex.morgan@example.com" value="alex.morgan@velure.com" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked> Keep me updated with exclusive drops & private archive sales
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Shipping Details -->
+                    <div class="checkout-section-box">
+                        <div class="section-num-title">
+                            <span class="step-circle">2</span>
+                            <h3>Delivery Address</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group half-width">
+                                <label for="checkout-fname">First Name</label>
+                                <input type="text" id="checkout-fname" value="Alex" required>
+                            </div>
+                            <div class="form-group half-width">
+                                <label for="checkout-lname">Last Name</label>
+                                <input type="text" id="checkout-lname" value="Morgan" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="checkout-address">Street Address</label>
+                                <input type="text" id="checkout-address" value="740 Park Avenue, Suite 12B" required>
+                            </div>
+                            <div class="form-group third-width">
+                                <label for="checkout-city">City</label>
+                                <input type="text" id="checkout-city" value="New York" required>
+                            </div>
+                            <div class="form-group third-width">
+                                <label for="checkout-state">State / Region</label>
+                                <input type="text" id="checkout-state" value="NY" required>
+                            </div>
+                            <div class="form-group third-width">
+                                <label for="checkout-zip">Postal / Zip Code</label>
+                                <input type="text" id="checkout-zip" value="10021" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="checkout-country">Country</label>
+                                <select id="checkout-country">
+                                    <option value="US">United States (USD $)</option>
+                                    <option value="UK">United Kingdom (GBP £)</option>
+                                    <option value="EU">European Union (EUR €)</option>
+                                    <option value="CA">Canada (CAD $)</option>
+                                    <option value="AU">Australia (AUD $)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Shipping Method Selection -->
+                    <div class="checkout-section-box">
+                        <div class="section-num-title">
+                            <span class="step-circle">3</span>
+                            <h3>Shipping Method</h3>
+                        </div>
+                        <div class="shipping-methods-stack">
+                            <label class="shipping-option-card active" onclick="selectShippingMethod(0, 'Standard Express')">
+                                <input type="radio" name="shipping_tier" value="0" checked>
+                                <div class="shipping-method-info">
+                                    <strong>Standard Express Delivery (3-5 Business Days)</strong>
+                                    <p>Complimentary tracked delivery straight to your doorstep.</p>
+                                </div>
+                                <span class="shipping-price-tag free">FREE</span>
+                            </label>
+
+                            <label class="shipping-option-card" onclick="selectShippingMethod(15, 'Next-Day White Glove')">
+                                <input type="radio" name="shipping_tier" value="15">
+                                <div class="shipping-method-info">
+                                    <strong>Next-Day White Glove Priority (1 Business Day)</strong>
+                                    <p>Direct courier with velvet dust bag and bespoke presentation box.</p>
+                                </div>
+                                <span class="shipping-price-tag">$15.00</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Payment Information -->
+                    <div class="checkout-section-box">
+                        <div class="section-num-title">
+                            <span class="step-circle">4</span>
+                            <h3>Payment Method</h3>
+                        </div>
+                        
+                        <div class="payment-tabs-group">
+                            <label class="payment-tab active" onclick="setPaymentType('card')">
+                                <input type="radio" name="payment_method" value="card" checked>
+                                <i class="ph ph-credit-card"></i> Credit / Debit Card
+                            </label>
+                            <label class="payment-tab" onclick="setPaymentType('paypal')">
+                                <input type="radio" name="payment_method" value="paypal">
+                                <i class="ph ph-paypal-logo"></i> PayPal
+                            </label>
+                            <label class="payment-tab" onclick="setPaymentType('cod')">
+                                <input type="radio" name="payment_method" value="cod">
+                                <i class="ph ph-hand-coins"></i> Cash on Delivery
+                            </label>
+                        </div>
+
+                        <!-- Card Fields Box -->
+                        <div id="card-fields-box" class="card-details-box">
+                            <div class="form-group full-width">
+                                <label for="card-num">Card Number</label>
+                                <div class="input-with-icon">
+                                    <input type="text" id="card-num" placeholder="4242 •••• •••• 4242" value="4532 8921 0034 8921" maxlength="19">
+                                    <i class="ph ph-lock card-lock-icon"></i>
+                                </div>
+                            </div>
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label for="card-exp">Expiration Date</label>
+                                    <input type="text" id="card-exp" placeholder="MM/YY" value="08/28" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-cvv">Security Code (CVV)</label>
+                                    <input type="text" id="card-cvv" placeholder="CVC" value="784" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="card-holder">Cardholder Name</label>
+                                <input type="text" id="card-holder" value="ALEX MORGAN">
+                            </div>
+                        </div>
+
+                        <!-- PayPal Box -->
+                        <div id="paypal-box" class="payment-notice-box" style="display: none;">
+                            <i class="ph ph-info"></i> You will be redirected to PayPal's high-security portal to finish your transaction safely.
+                        </div>
+
+                        <!-- Cash on Delivery Box -->
+                        <div id="cod-box" class="payment-notice-box" style="display: none;">
+                            <i class="ph ph-check-circle"></i> Pay in cash or contactless POS card machine directly upon package arrival.
+                        </div>
+                    </div>
+
+                    <!-- Place Order CTA Button -->
+                    <div class="checkout-submit-area">
+                        <button type="button" id="place-order-btn" class="btn btn-primary btn-block place-order-btn" onclick="processOrder()">
+                            <span class="btn-text"><i class="ph ph-lock-key"></i> Pay & Complete Order (<span id="checkout-btn-total">$0.00</span>)</span>
+                            <span class="btn-spinner" style="display: none;"><i class="ph ph-spinner ph-spin"></i> Processing Atelier Order...</span>
+                        </button>
+                        <p class="order-guarantee-note">
+                            <i class="ph ph-shield-check"></i> Encrypted with military-grade 256-Bit SSL. 30-day effortless returns guaranteed.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: Order Summary Sidebar -->
+                <div class="checkout-order-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Order Summary</h3>
+                        <span class="item-count-pill" id="checkout-item-count">0 items</span>
+                    </div>
+
+                    <!-- Scrollable list of cart items in checkout -->
+                    <div class="checkout-items-list" id="checkout-items-list">
+                        <!-- Injected via JavaScript -->
+                    </div>
+
+                    <!-- Coupon Code Input in Checkout -->
+                    <div class="checkout-promo-box">
+                        <div class="promo-input-group">
+                            <input type="text" id="checkout-promo-input" placeholder="Promo code (VELURE10)">
+                            <button type="button" onclick="applyCheckoutPromo()">Apply</button>
+                        </div>
+                        <div id="checkout-promo-msg" class="checkout-promo-msg"></div>
+                    </div>
+
+                    <!-- Breakdown Calculations -->
+                    <div class="checkout-price-breakdown">
+                        <div class="price-row">
+                            <span>Subtotal</span>
+                            <strong id="checkout-subtotal">$0.00</strong>
+                        </div>
+                        <div class="price-row discount-row" id="checkout-discount-row" style="display: none;">
+                            <span>Discount (<span id="checkout-discount-tag">VELURE10</span>)</span>
+                            <strong id="checkout-discount" style="color: var(--success);">-0.00</strong>
+                        </div>
+                        <div class="price-row">
+                            <span>Shipping (<span id="checkout-shipping-name">Standard Express</span>)</span>
+                            <strong id="checkout-shipping-cost">FREE</strong>
+                        </div>
+                        <div class="price-row">
+                            <span>Estimated Sales Tax (8%)</span>
+                            <strong id="checkout-tax">$0.00</strong>
+                        </div>
+                        <div class="price-row grand-total-row">
+                            <span>Total Due</span>
+                            <strong id="checkout-grand-total">$0.00</strong>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-brand-trust">
+                        <div class="trust-item"><i class="ph ph-cube"></i> Luxury Signature Presentation Box</div>
+                        <div class="trust-item"><i class="ph ph-shield-star"></i> Atelier Authenticity Certificate</div>
+                        <div class="trust-item"><i class="ph ph-arrows-counter-clockwise"></i> 30-Day Hassle-Free Global Returns</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Confirmation / Success View -->
+            <div class="order-success-view" id="order-success-view" style="display: none;">
+                <div class="success-icon-wrap">
+                    <i class="ph ph-check-circle"></i>
+                </div>
+                <h2>Thank You, <span id="success-customer-name">Valued Client</span>!</h2>
+                <p class="order-confirm-sub">Your bespoke atelier order has been confirmed and placed with our master tailors.</p>
+                
+                <div class="order-id-badge">
+                    <span>Order Reference Number:</span>
+                    <strong id="success-order-id">#VEL-84920</strong>
+                </div>
+
+                <div class="order-status-timeline">
+                    <div class="timeline-step done">
+                        <div class="step-dot"><i class="ph ph-check"></i></div>
+                        <span>Order Confirmed</span>
+                    </div>
+                    <div class="timeline-step active">
+                        <div class="step-dot"><i class="ph ph-sparkle"></i></div>
+                        <span>Handcrafting & Packing</span>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"><i class="ph ph-airplane-takeoff"></i></div>
+                        <span>Dispatched</span>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="step-dot"><i class="ph ph-house-line"></i></div>
+                        <span>Delivered</span>
+                    </div>
+                </div>
+
+                <div class="order-receipt-summary" id="order-receipt-summary">
+                    <!-- Injected via JavaScript -->
+                </div>
+
+                <div class="success-actions">
+                    <button class="btn btn-primary" onclick="closeCheckout(); resetCart(); scrollToSection('men-section');">
+                        Continue Shopping <i class="ph ph-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-overlay" id="quick-view-overlay">
+        <div class="quick-view-card">
+            <button class="close-quick-view" onclick="closeQuickView()"><i class="ph ph-x"></i></button>
+            <div class="quick-view-grid">
+                <div class="qv-img-container">
+                    <img id="qv-main-img" src="" alt="Product Detail" onerror="handleImgError(this, 'Men')">
+                </div>
+                <div class="qv-info-container">
+                    <span class="qv-category" id="qv-category">CATEGORY</span>
+                    <h2 class="qv-title" id="qv-title">Product Name</h2>
+                    
+                    <div class="qv-rating-row">
+                        <div class="qv-stars">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star-half"></i>
+                        </div>
+                        <span class="qv-score" id="qv-rating-score">4.9</span>
+                        <span class="qv-review-count">(128 Verified Reviews)</span>
+                    </div>
+
+                    <div class="qv-price" id="qv-price">$0.00</div>
+                    <p class="qv-description" id="qv-desc">Luxury fabric details and tailoring.</p>
+
+                    <!-- Sizes -->
+                    <div class="qv-option-block">
+                        <label>Select Size: <strong id="selected-size-label">M</strong></label>
+                        <div class="qv-sizes" id="qv-sizes-container">
+                            <!-- Injected -->
+                        </div>
+                    </div>
+
+                    <!-- Colors -->
+                    <div class="qv-option-block">
+                        <label>Available Colorways</label>
+                        <div class="qv-colors" id="qv-colors-container">
+                            <!-- Injected -->
+                        </div>
+                    </div>
+
+                    <!-- Quantity & Add to Bag -->
+                    <div class="qv-action-row">
+                        <div class="qv-qty-picker">
+                            <button type="button" onclick="changeQvQty(-1)">-</button>
+                            <span id="qv-qty">1</span>
+                            <button type="button" onclick="changeQvQty(1)">+</button>
+                        </div>
+                        <button class="btn btn-primary qv-add-btn" id="qv-add-to-bag-btn">
+                            <i class="ph ph-shopping-bag"></i> Add to Bag
+                        </button>
+                    </div>
+
+                    <div class="qv-perks">
+                        <span><i class="ph ph-truck"></i> Free 3-Day Express Shipping</span>
+                        <span><i class="ph ph-arrows-clockwise"></i> 30-Day Free Returns</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Popup -->
+    <div class="toast-notification" id="toast-notification">
+        <i class="ph-fill ph-check-circle toast-icon"></i>
+        <span id="toast-message">Added to shopping bag!</span>
+    </div>
+
+    <!-- Application Script Files -->
+    <script src="products.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
